@@ -8,7 +8,7 @@ module.exports = {
   target: 'node',
   devtool: 'source-map',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '..', 'dist'),
     filename: 'build.js'
   },
   module: {

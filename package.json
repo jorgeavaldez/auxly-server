@@ -6,11 +6,10 @@
   "license": "MIT",
   "scripts": {
     "pretty": "prettier-eslint --write \"./src/**/*.js\" \"index.js\"",
-    "dev": "webpack --config ./config/webpack.config.dev.js --watch ",
+    "dev": "webpack --config ./config/webpack.config.dev.js --watch --hot",
     "build:dev": "webpack --config ./config/webpack.config.dev.js",
     "build:prod": "webpack --config ./config/webpack.config.prod.js",
-    "start": "yarn build:prod && node ./dist/build.js",
-    "precommit": "lint-staged"
+    "start": "yarn build:prod && node ./dist/build.js"
   },
   "lint-staged": {
     "index.js": [
@@ -45,5 +44,10 @@
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.5",
     "webpack-node-externals": "^1.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
