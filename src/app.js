@@ -1,9 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const authRoutes = require('./auth');
-const apiRoutes = require('./api');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import authRoutes from './auth';
+import apiRoutes from './api';
+
+import { errorHandler } from './errors';
 
 const port = process.env.PORT || 6969;
 
@@ -20,7 +22,9 @@ app.use('/', authRoutes);
 app.use('/api', apiRoutes);
 
 app.use('/health', (_, res) => {
-  res.send(200);
+  res.sendStatus(200);
 });
+
+app.use(errorHandler);
 
 module.exports = app;
