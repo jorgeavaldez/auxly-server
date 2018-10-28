@@ -1,0 +1,14 @@
+version: "3"
+
+volumes:
+  node_modules:
+
+services:
+  server.dev:
+    build: .
+    command: yarn
+    ports:
+      - 6969:6969 
+    volumes:
+      - .:/code/auxly-server
+      - node_modules:/code/auxly-server
